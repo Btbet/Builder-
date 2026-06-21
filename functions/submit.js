@@ -16,6 +16,29 @@ export async function onRequestPost(context) {
     )
     .run();
 
+
+    await fetch("https://api.resend.com/emails", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    from: "onboarding@resend.dev",
+    to: data.email,
+    subject: "Your Free AI Business Guide",
+    html: `
+      <h2>Thank you for requesting the guide!</h2>
+      <p>Your download is ready:</p>
+      <p>
+        <a href="https://builder-8we.pages.dev/guide.pdf">
+          Download the PDF Guide
+        </a>
+      </p>
+    `
+  })
+});
+
     return new Response(
       JSON.stringify({
         success: true
