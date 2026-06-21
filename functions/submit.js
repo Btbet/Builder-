@@ -41,7 +41,7 @@ export async function onRequestPost(context) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          from: "onboarding@resend.dev",
+          from: "stackbuilderdavemindx@gmail.com",
           to: data.email,
           subject: "Your Free AI Business Guide",
           html: `
