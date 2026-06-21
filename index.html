@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Free AI Business Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f4f4f4;
+      padding:20px;
+    }
+
+    .container{
+      max-width:500px;
+      margin:auto;
+      background:white;
+      padding:20px;
+      border-radius:10px;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+      box-sizing:border-box;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      background:#0070f3;
+      color:white;
+      border:none;
+      border-radius:5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Get Free AI Business Guide</h2>
+
+  <form id="leadForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="tel" name="phone" placeholder="Phone Number">
+
+    <button type="submit">
+      Download Guide
+    </button>
+  </form>
+</div>
+
+<script>
+document.getElementById("leadForm")
+.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+  const form = e.target;
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value
+  };
+
+  const res = await fetch("/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  if(res.ok){
+    window.location.href = "success.html";
+  }
+});
+</script>
+
+</body>
+</html>
